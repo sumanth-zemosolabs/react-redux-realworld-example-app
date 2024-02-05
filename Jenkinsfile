@@ -22,6 +22,7 @@ pipeline{
               tty: true
             - name: docker
               image: docker
+              privileged: true
               command:
               - cat
               tty: true
