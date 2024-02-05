@@ -37,13 +37,13 @@ pipeline{
     }
 
     stages{
-        stage(clone){
-            steps{
-                container(git){
-                    git branch: 'deployment', credentialsId: 'jenkins github pat', url: 'https://github.com/sumanth-zemosolabs/react-redux-realworld-example-app.git'
-                }
-            }
-        }
+        // stage(clone){
+        //     steps{
+        //         container(git){
+        //             git branch: 'deployment', credentialsId: 'jenkins github pat', url: 'https://github.com/sumanth-zemosolabs/react-redux-realworld-example-app.git'
+        //         }
+        //     }
+        // }
         stage(build) {
           steps {
             container('node') {
