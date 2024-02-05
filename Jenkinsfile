@@ -23,8 +23,8 @@ pipeline{
             - name: docker
               image: docker
               privileged: true
-              command:
-              - cat
+              // command:
+              // - cat
               tty: true
               volumeMounts:
               - mountPath: /var/run/docker.sock
