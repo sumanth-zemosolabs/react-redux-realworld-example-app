@@ -31,11 +31,11 @@ pipeline{
     stages{
         stage(build) {
           steps {
-            container('node') {
+            
               sh 'node --version'
               sh 'npm install'
               sh 'npm run build'
-            }
+            
           }
         }
         stage(docker){
