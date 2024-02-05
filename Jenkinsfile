@@ -22,9 +22,10 @@ pipeline{
               tty: true
             - name: docker
               image: docker
-              privileged: true
-              // command:
-              // - cat
+              securityContext:
+                privileged: true
+              command:
+              - cat
               tty: true
               volumeMounts:
               - mountPath: /var/run/docker.sock
@@ -45,18 +46,19 @@ pipeline{
         //         }
         //     }
         // }
-        stage(build) {
-          steps {
-            container('node') {
-              sh 'node --version'
-              sh 'npm install'
-              sh 'npm run build'
-            }
-          }
-        }
+        // stage(build) {
+        //   steps {
+        //     container('node') {
+        //       sh 'node --version'
+        //       sh 'npm install'
+        //       sh 'npm run build'
+        //     }
+        //   }
+        // }
         stage(docker){
             steps{
                 container('docker'){
+                    sh 'docker info'
                     sh 'docker build -t react .'
                     sh 'docker images'
                 }
