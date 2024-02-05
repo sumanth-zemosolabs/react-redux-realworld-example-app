@@ -10,9 +10,9 @@ pipeline{
               name: node
           spec:
             containers:
-            - name: gith
-              image: bitnami/git
-              command:
+            - name: node
+              image: node:20-alpine
+              command: 
               - cat
               tty: true
             - name: docker
@@ -34,22 +34,15 @@ pipeline{
     }
 
     stages{
-        // stage(clone){
-        //     steps{
-        //         container(git){
-        //             git branch: 'deployment', credentialsId: 'jenkins github pat', url: 'https://github.com/sumanth-zemosolabs/react-redux-realworld-example-app.git'
-        //         }
-        //     }
-        // }
-        // stage(build) {
-        //   steps {
-        //     container('node') {
-        //       sh 'node --version'
-        //       sh 'npm install'
-        //       sh 'npm run build'
-        //     }
-        //   }
-        // }
+        stage(build) {
+          steps {
+            container('node') {
+              sh 'node --version'
+              sh 'npm install'
+              sh 'npm run build'
+            }
+          }
+        }
         stage(docker){
             steps{
                 container('docker'){
