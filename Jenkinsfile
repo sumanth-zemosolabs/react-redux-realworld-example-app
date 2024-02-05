@@ -15,11 +15,6 @@ pipeline{
               command:
               - cat
               tty: true
-            - name: node
-              image: node:20-alpine
-              command: 
-              - cat
-              tty: true
             - name: docker
               image: docker
               securityContext:
